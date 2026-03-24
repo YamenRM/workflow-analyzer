@@ -19,7 +19,7 @@ This project helps teams understand and improve their internal processes by leve
 
 
 ## Demo
-[Live demo](https://workflow-analyzer-y9lzx6np6hykxzewv6covz.streamlit.app/)
+[Live demo](https://huggingface.co/spaces/YamenRM/workflow-analyzer)
 
 Users can:
 1. Enter a workflow description
