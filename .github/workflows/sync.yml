@@ -1,18 +1,16 @@
-name: Sync to Hugging Face
-on:
-  push:
-    branches: [main]
-jobs:
-  sync-to-hub:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          lfs: true
-      - name: Push to hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push -f https://YamenRM:$HF_TOKEN@huggingface.co/spaces/YamenRM/workflow-analyzer main
+- name: Upload to Hugging Face
+  env:
+    HF_TOKEN: ${{ secrets.HF_TOKEN }}
+  run: |
+    pip install huggingface_hub
+    python - <<EOF
+from huggingface_hub import upload_folder
+import os
 
-
+upload_folder(
+    folder_path='.',
+    repo_id='YamenRM/workflow-analyzer',
+    repo_type='space',
+    token=os.environ['HF_TOKEN']
+)
+EOF
